@@ -1,6 +1,6 @@
 # Terms and Conditions for FastCred
 
-**Last Updated**: [2024/03/10]
+**Last Updated**: [2024/09/16]
 
 Welcome to FastCred! These terms and conditions outline the rules and regulations for the use of FastCred's app, located at (https://devhorizon-labs.github.io/fastcred-files/).
 

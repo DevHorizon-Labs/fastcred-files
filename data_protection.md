@@ -1,6 +1,6 @@
 # Data Protection Policy for FastCred
 
-**Effective Date**: [2024/03/10]
+**Effective Date**: [2024/09/16]
 
 At FastCred, we are committed to protecting your personal information and respecting your privacy in accordance with best practices and applicable laws. This Data Protection Policy explains how we handle and secure your personal data.
 
