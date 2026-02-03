@@ -15,30 +15,58 @@
             font-size: 16px;
             cursor: pointer;
         }
+        #fileContent {
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-    <h1>FastCred Files</h1>
-    <button onclick="viewFile('privacy_policy.md')">Privacy Policy</button>
-    <button onclick="viewFile('terms_and_conditions.md')">Terms and Conditions</button>
-    <button onclick="viewFile('data_protection.md')">Data Protection</button>
 
-    <div id="fileContent"></div>
+<h1>FastCred Files</h1>
+
+<button onclick="navigate('privacy-policy')">Privacy Policy</button>
+<button onclick="navigate('terms-and-conditions')">Terms and Conditions</button>
+<button onclick="navigate('data-protection')">Data Protection</button>
+
+<div id="fileContent"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
 <script>
-    function viewFile(filename) {
-        fetch(filename)
+    const fileMap = {
+        'privacy-policy': 'privacy_policy.md',
+        'terms-and-conditions': 'terms_and_conditions.md',
+        'data-protection': 'data_protection.md'
+    };
+
+    function navigate(hash) {
+        window.location.hash = hash;
+        loadFromHash();
+    }
+
+    function loadFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        const file = fileMap[hash];
+
+        if (!file) return;
+
+        fetch(file)
             .then(response => response.text())
             .then(markdown => {
                 const converter = new showdown.Converter();
-                const html = converter.makeHtml(markdown);
-                document.getElementById('fileContent').innerHTML = html;
+                document.getElementById('fileContent').innerHTML =
+                    converter.makeHtml(markdown);
             })
             .catch(error => {
                 console.error('Error fetching file:', error);
             });
     }
+
+    // Cargar automáticamente al entrar o cambiar hash
+    window.addEventListener('load', loadFromHash);
+    window.addEventListener('hashchange', loadFromHash);
 </script>
+
 </body>
 </html>
